@@ -1,4 +1,3 @@
-# ChaGame
-Controle de versionamento do jogo
-
-Porra
+# ChaGame_V.0.2
+"#Chagame" 
+"# Chagame" 
