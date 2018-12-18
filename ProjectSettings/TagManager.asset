@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - "Ch\xE3o"
   layers:
   - Default
   - TransparentFX
