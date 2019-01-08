@@ -2029,7 +2029,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c4d1bcf95618f4dbf82edaabf6cb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txt: {fileID: 0}
+  player: {fileID: 1264922144}
+  impulso: 50
+  ativaPulo: 0
 --- !u!114 &833781597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2042,7 +2044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1264922142}
-  camVel: 0.25
+  camVel: 0
   ultimolocal: {x: 0, y: 0, z: 0}
   velAtual: {x: 0, y: 0, z: 0}
 --- !u!61 &833781598
@@ -3360,10 +3362,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.01
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 20
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3468,10 +3470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d79a3a2af7c1e46951b9895f4d341a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "VelocidadeAcelera\xE7\xE3o": 2
-  ativaPulo: 0
+  "VelocidadeAcelera\xE7\xE3o": 5
   moedas: 0
-  txt: {fileID: 0}
 --- !u!114 &1264922148
 MonoBehaviour:
   m_ObjectHideFlags: 0

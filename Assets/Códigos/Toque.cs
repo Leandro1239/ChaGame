@@ -5,29 +5,40 @@ using UnityEngine.UI;
 
 public class Toque : MonoBehaviour {
 
-    public Text txt;
+    public Rigidbody2D player;
+    public float impulso = 50f;
     public Touch toque;
-	
-	// Update is called once per frame
-	void Update () {
+    public bool ativaPulo = false;
 
-        if(Input.touchCount > 0)
+    public void OnCollisionEnter2D(Collision2D ativar)          //PULAR SOMENTE TOCANDO NO CHÃO
+    {
+        /*if (ativar.gameObject.CompareTag("Chão"))
+        {
+            ativaPulo = true;
+        }*/
+    }
+
+    void Update () {
+
+        if (Input.touchCount > 0)                               //TOQUE NA TELA
         {
             toque = Input.GetTouch(0);
             switch (toque.phase)
             {
                 case TouchPhase.Began:
-                    
-                        transform.Translate(new Vector3(0, 1, 0));
-                    
-                    
-                    break;
+                    //if (ativaPulo)
+                    //{
+                        player.AddForce(new Vector2(0, impulso * Time.deltaTime), ForceMode2D.Impulse);
+                        ativaPulo = false;
+                    //}
+                break;
 
                 case TouchPhase.Moved:
                     //CORRE
-                    break;
+                break;
             }
+
         }
-		
-	}
+
+    }
 }
