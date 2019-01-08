@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - "Ch\xE3o"
+  - Moeda
+  - Inimigo
   layers:
   - Default
   - TransparentFX
