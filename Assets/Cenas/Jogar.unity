@@ -1950,7 +1950,6 @@ GameObject:
   - component: {fileID: 833781593}
   - component: {fileID: 833781598}
   - component: {fileID: 833781597}
-  - component: {fileID: 833781596}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2018,20 +2017,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &833781596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 833781592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c4d1bcf95618f4dbf82edaabf6cb1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1264922144}
-  impulso: 50
-  ativaPulo: 0
 --- !u!114 &833781597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,9 +2072,9 @@ GameObject:
   - component: {fileID: 852179687}
   - component: {fileID: 852179689}
   - component: {fileID: 852179688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Foot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2575,9 +2560,9 @@ GameObject:
   - component: {fileID: 1099387934}
   - component: {fileID: 1099387936}
   - component: {fileID: 1099387935}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Left Arm
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3310,6 +3295,34 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1547fdb02021f2439255ff414617709, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1239410747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1239410748}
+  m_Layer: 8
+  m_Name: chegachao
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1239410748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1239410747}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.478, y: -1.639, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1264922143}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1246663782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4661049074132718, guid: f1547fdb02021f2439255ff414617709,
@@ -3328,7 +3341,7 @@ GameObject:
   - component: {fileID: 1264922144}
   - component: {fileID: 1264922147}
   - component: {fileID: 1264922148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Jogador
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3342,12 +3355,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1264922142}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.277223, y: -2, z: 0}
+  m_LocalPosition: {x: -8.01, y: -2.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1099387934}
   - {fileID: 1909506139}
   - {fileID: 852179687}
+  - {fileID: 1239410748}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3369,7 +3383,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!60 &1264922145
 PolygonCollider2D:
@@ -3470,8 +3484,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d79a3a2af7c1e46951b9895f4d341a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "VelocidadeAcelera\xE7\xE3o": 5
   moedas: 0
+  player: {fileID: 1264922144}
+  tocachao: 1
+  checachao: {fileID: 1239410748}
+  piso:
+    serializedVersion: 2
+    m_Bits: 1536
 --- !u!114 &1264922148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4636,9 +4655,9 @@ GameObject:
   - component: {fileID: 1909506139}
   - component: {fileID: 1909506141}
   - component: {fileID: 1909506140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Right Arm
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

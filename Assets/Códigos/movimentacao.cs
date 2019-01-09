@@ -7,43 +7,45 @@ using UnityEngine.UI;
 public class Movimentacao : MonoBehaviour {
 
     Rigidbody2D rigd = new Rigidbody2D();
-    public int VelocidadeAceleração = 5;
+    float VelocidadeAceleração = 10;
     public int moedas = 0;
 
-   /* public bool ativaPulo = false;
+    float forca = 20f;
     public Rigidbody2D player;
-    public float impulso = 50f;*/
+    public bool tocachao = false;
 
-    void Start () {
+    public Transform checachao;
+    float chaograu = 0.2f;
+    public LayerMask piso;
+
+    void Start ()
+    {
+        player = GetComponent<Rigidbody2D>();
         rigd = gameObject.GetComponent <Rigidbody2D>();
 	}
 
-    void Update()               //MOVE PARA PRENTE
+    void FixedUpdate()               
     {
-        rigd.velocity = transform.right * VelocidadeAceleração;
+        rigd.velocity =  new Vector2 (VelocidadeAceleração, rigd.velocity.y);
+        tocachao = Physics2D.OverlapCircle(checachao.position, chaograu, piso);     //CONTATO COM O CHAO
 
-        /*                                                      PULAR PELO TECLADO
-        if (ativaPulo)                            
+
+        if (tocachao && Input.GetKeyDown(KeyCode.Space))                            //PULA
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                player.AddForce(new Vector2(0, impulso * Time.deltaTime), ForceMode2D.Impulse);
-                ativaPulo = false;
-            }
-
+            player.AddForce(new Vector2(0, forca));
+            VelocidadeAceleração = VelocidadeAceleração * 1.1f;
         }
-        
-        public void OnCollisionEnter2D(Collision2D ativar)          //PULAR SOMENTE TOCANDO NO CHÃO
-        {
-            if (ativar.gameObject.CompareTag("Chão"))
-            {
-                ativaPulo = true;
-            }
-        } 
-
-
-         */
     }
+
+    /*
+    public void Jump()
+    {
+        if (ativaPulo)
+        {
+            player.AddForce(new Vector2(0, impulso * Time.deltaTime), ForceMode2D.Impulse);
+            ativaPulo = false;
+        }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D Pegou)                 //PEGA MOEDAS
     {
@@ -53,5 +55,4 @@ public class Movimentacao : MonoBehaviour {
             Destroy(Pegou.gameObject);
         }
     }
-       
-}
+}     
