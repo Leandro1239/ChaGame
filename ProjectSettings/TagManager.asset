@@ -7,6 +7,7 @@ TagManager:
   - "Ch\xE3o"
   - Moeda
   - Inimigo
+  - coin
   layers:
   - Default
   - TransparentFX

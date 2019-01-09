@@ -2,13 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Movimentacao : MonoBehaviour {
 
     Rigidbody2D rigd = new Rigidbody2D();
     float VelocidadeAceleração = 10;
-    public int moedas = 0;
+
+    public float moedas = 0f;
+    public TextMesh total;
 
     float forca = 20f;
     public Rigidbody2D player;
@@ -35,6 +38,8 @@ public class Movimentacao : MonoBehaviour {
             player.AddForce(new Vector2(0, forca));
             VelocidadeAceleração = VelocidadeAceleração * 1.1f;
         }
+
+
     }
 
     /*
@@ -47,12 +52,18 @@ public class Movimentacao : MonoBehaviour {
         }
     }*/
 
-    private void OnTriggerEnter2D(Collider2D Pegou)                 //PEGA MOEDAS
+    public void OnCollisionEnter2D(Collision2D ativar)          //PULAR SOMENTE TOCANDO NO CHÃO
     {
-        if (Pegou.gameObject.CompareTag("Moeda"))
+        if (ativar.gameObject.CompareTag("coin"))
         {
-            moedas++;
-            Destroy(Pegou.gameObject);
+            moedas = moedas + 1;
+            Destroy(ativar.gameObject);
+            total.text = moedas.ToString();
         }
+    }
+
+    public void Denovo()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }     
