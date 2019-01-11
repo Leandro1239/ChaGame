@@ -33,26 +33,25 @@ public class Movimentacao : MonoBehaviour {
         tocachao = Physics2D.OverlapCircle(checachao.position, chaograu, piso);     //CONTATO COM O CHAO
 
 
-        if (tocachao && Input.GetKeyDown(KeyCode.Space))                            //PULA
+        /*if (tocachao && Input.GetKeyDown(KeyCode.Space))                            //PULA com o teclado
         {
             player.AddForce(new Vector2(0, forca));
             VelocidadeAceleração = VelocidadeAceleração * 1.1f;
-        }
+        }*/
 
 
     }
 
-    /*
-    public void Jump()
+    public void Pula()
     {
-        if (ativaPulo)
+        if (tocachao)                            //PULA com o botão
         {
-            player.AddForce(new Vector2(0, impulso * Time.deltaTime), ForceMode2D.Impulse);
-            ativaPulo = false;
+            player.AddForce(new Vector2(0, forca));
+            VelocidadeAceleração = VelocidadeAceleração * 1.1f;
         }
-    }*/
+    }
 
-    public void OnCollisionEnter2D(Collision2D ativar)          //PULAR SOMENTE TOCANDO NO CHÃO
+    public void OnTriggerEnter2D(Collider2D ativar)          //PULAR SOMENTE TOCANDO NO CHÃO
     {
         if (ativar.gameObject.CompareTag("coin"))
         {
@@ -62,8 +61,8 @@ public class Movimentacao : MonoBehaviour {
         }
     }
 
-    public void Denovo()
+   /* public void Denovo()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    }*/
 }     

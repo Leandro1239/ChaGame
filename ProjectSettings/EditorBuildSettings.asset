@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Cenas/Menu.unity
     guid: 8ac48114626d9014a8f047f96f503a63
   - enabled: 1
+    path: Assets/Cenas/Avisos.unity
+    guid: 3dc1c5e6695f0d54caa96eefacc2f11f
+  - enabled: 1
     path: Assets/Cenas/Jogar.unity
     guid: f4634fd128e128b46b2354cffb4a5e6c
+  - enabled: 1
+    path: Assets/Cenas/Morte.unity
+    guid: ac2bf34c5e7317843947448af63c015e
   m_configObjects: {}

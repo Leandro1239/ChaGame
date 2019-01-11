@@ -19,4 +19,19 @@ public class MenuPrincipal : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void Denovo()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Recomeçar()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void Retornar()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
 }
