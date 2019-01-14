@@ -8,6 +8,7 @@ TagManager:
   - Moeda
   - Inimigo
   - coin
+  - Sensor
   layers:
   - Default
   - TransparentFX
