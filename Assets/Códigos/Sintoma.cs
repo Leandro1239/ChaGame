@@ -12,7 +12,7 @@ public class Sintoma : MonoBehaviour {
     public int Dano = 25;
     public int Energia = 25;
 
-    public void OnCollisionEnter2D(Collision2D Dano)          //PULAR SOMENTE TOCANDO NO CHÃO
+    public void OnCollisionEnter2D(Collision2D Dano)          
     {
         if (Dano.gameObject.CompareTag("Inimigo"))
         {
@@ -20,8 +20,7 @@ public class Sintoma : MonoBehaviour {
             VidaPerde();
         }
     }
-
-
+    
     public void VidaPerde()
     {
         if (ValorAtual > -1)
@@ -54,7 +53,5 @@ public class Sintoma : MonoBehaviour {
         {
             ValorAtual = 1;
         }
-        
-
     }
 }

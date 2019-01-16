@@ -29,14 +29,6 @@ public class Movimentacao : MonoBehaviour {
     {
         rigd.velocity =  new Vector2 (VelocidadeAceleração, rigd.velocity.y);
         tocachao = Physics2D.OverlapCircle(checachao.position, chaograu, piso);     //CONTATO COM O CHAO
-
-
-        /*if (tocachao && Input.GetKeyDown(KeyCode.Space))                            //PULA com o teclado
-        {
-            player.AddForce(new Vector2(0, forca));
-            VelocidadeAceleração = VelocidadeAceleração * 1.1f;
-        }*/
-
     }
 
     public void Pula()
@@ -48,12 +40,12 @@ public class Movimentacao : MonoBehaviour {
         }
     }
 
-    public void OnTriggerExit2D(Collider2D ativar)          //PULAR SOMENTE TOCANDO NO CHÃO
+    public void OnTriggerEnter2D(Collider2D ativar)          
     {
         if (ativar.gameObject.CompareTag("coin"))
         {
             Destroy(ativar.gameObject);
-            moedas +=1;
+            moedas += 1;
             total.text = moedas.ToString();
         }
     }
