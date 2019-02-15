@@ -4,34 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movimentacao : MonoBehaviour {
-
-    Rigidbody2D rigd = new Rigidbody2D();
-    float VelocidadeAceleração = 10;
-
-    public int moedas = 0;
+       
+    public int moedas = 0;                      //MOEDA
     public TextMesh total;
 
-    float forca = 20;
+    float forca = 20;                           //JOGADOR
     public Rigidbody2D player;
-    public bool tocachao = false;
+    private bool tocachao = false;
+    Rigidbody2D rigd = new Rigidbody2D();           
+    float VelocidadeAceleração = 10;
 
-    public Transform checachao;
+    public Transform checachao;                     //CHÃO
     float chaograu = 0.2f;
     public LayerMask piso;
 
-    public GameObject Largada;
+    public GameObject Largada;                      //RECORDE
     public GameObject jogador;
     private float distancia = 0;
     private int recorde = 0;
     public TextMesh total_Distancia;
 
-    void Start ()
+    void Start ()                                               //Jogador
     {
         player = GetComponent<Rigidbody2D>();
         rigd = gameObject.GetComponent <Rigidbody2D>();
 	}
 
-    private void Update()
+    private void Update()                                                       // MEDE A DISTANCIA E COLOCA EM 'RECORDE'
     {
         distancia = Vector2.Distance(Largada.transform.position, jogador.transform.position);
         Debug.Log(distancia);
@@ -41,20 +40,20 @@ public class Movimentacao : MonoBehaviour {
 
     void FixedUpdate()               
     {
-        rigd.velocity =  new Vector2 (VelocidadeAceleração, rigd.velocity.y);
-        tocachao = Physics2D.OverlapCircle(checachao.position, chaograu, piso);     //CONTATO COM O CHAO
+        rigd.velocity =  new Vector2 (VelocidadeAceleração, rigd.velocity.y);               //FAZ CORRER SOZINHO
+        tocachao = Physics2D.OverlapCircle(checachao.position, chaograu, piso);             //CONTATO COM O CHAO
     }
 
     public void Pula()
     {
-        if (tocachao)                            //PULA com o botão
-        {
-            player.AddForce(new Vector2(0, forca));
-            VelocidadeAceleração = VelocidadeAceleração * 1.01f;
-        }
+         if (tocachao)                            //PULA com o botão
+         {
+            player.AddForce(new Vector2(0, forca));                                         //SAI DO CHÃO
+            VelocidadeAceleração = VelocidadeAceleração * 1.05f;                            //ATRIBUI O AUMENTO DA VELOCIDADE A CADA PULO
+         }   
     }
 
-    public void OnTriggerEnter2D(Collider2D ativar)          
+    public void OnTriggerEnter2D(Collider2D ativar)                         //COLETA E CONTA MOEDA
     {
         if (ativar.gameObject.CompareTag("coin"))
         {
