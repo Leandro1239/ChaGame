@@ -10,7 +10,7 @@ public class CriadorDeCenário : MonoBehaviour
     {
         if (criar.gameObject.CompareTag("Player"))
         {
-            Instantiate(obj, new Vector3(player.position.x + 69.4f , -1, 1), Quaternion.identity);
+            Instantiate(obj, new Vector3(player.position.x + 70.85f , -1, 1), Quaternion.identity);
         }
     }
 }

@@ -23,11 +23,15 @@ public class Movimentacao : MonoBehaviour {
     private float distancia = 0;
     private int recorde = 0;
     public TextMesh total_Distancia;
+    Animator anim;
 
     void Start ()                                               //Jogador
     {
         player = GetComponent<Rigidbody2D>();
         rigd = gameObject.GetComponent <Rigidbody2D>();
+
+        anim = GetComponent<Animator>();
+    
 	}
 
     private void Update()                                                       // MEDE A DISTANCIA E COLOCA EM 'RECORDE'
@@ -36,21 +40,29 @@ public class Movimentacao : MonoBehaviour {
         Debug.Log(distancia);
         recorde = (int)distancia;
         total_Distancia.text = recorde.ToString();
-    }
 
-    void FixedUpdate()               
-    {
-        rigd.velocity =  new Vector2 (VelocidadeAceleração, rigd.velocity.y);               //FAZ CORRER SOZINHO
+        rigd.velocity = new Vector2(VelocidadeAceleração, rigd.velocity.y);               //FAZ CORRER SOZINHO
         tocachao = Physics2D.OverlapCircle(checachao.position, chaograu, piso);             //CONTATO COM O CHAO
     }
 
     public void Pula()
     {
-         if (tocachao)                            //PULA com o botão
-         {
+        if (tocachao)                            //PULA com o botão
+        {
             player.AddForce(new Vector2(0, forca));                                         //SAI DO CHÃO
-            VelocidadeAceleração = VelocidadeAceleração * 1.05f;                            //ATRIBUI O AUMENTO DA VELOCIDADE A CADA PULO
-         }   
+            anim.SetBool("Pular", true);
+            anim.SetBool("Correr", false);
+            VelocidadeAceleração = VelocidadeAceleração * 1.02f;                            //ATRIBUI O AUMENTO DA VELOCIDADE A CADA PULO
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D Chao)
+    {
+        if (Chao.gameObject.CompareTag("Chão"))
+        {
+            anim.SetBool("Pular", false);
+            anim.SetBool("Correr", true);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D ativar)                         //COLETA E CONTA MOEDA
