@@ -37,7 +37,7 @@ public class Movimentacao : MonoBehaviour {
     private void Update()                                                       // MEDE A DISTANCIA E COLOCA EM 'RECORDE'
     {
         distancia = Vector2.Distance(Largada.transform.position, jogador.transform.position);
-        Debug.Log(distancia);
+        //Debug.Log(distancia);
         recorde = (int)distancia;
         total_Distancia.text = recorde.ToString();
 
